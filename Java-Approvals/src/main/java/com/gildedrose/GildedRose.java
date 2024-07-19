@@ -14,21 +14,18 @@ class GildedRose {
     }
 
     private static void updateQuality(Item item) {
-        if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            return;
+        switch (item.name) {
+            case "Sulfuras, Hand of Ragnaros":
+                break;
+            case "Aged Brie":
+                updateAgedBrie(item);
+                break;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                updateBackstagePass(item);
+                break;
+            default:
+                updateOther(item);
         }
-
-        if (item.name.equals("Aged Brie")) {
-            updateAgedBrie(item);
-            return;
-        }
-
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            updateBackstagePass(item);
-            return;
-        }
-
-        updateOther(item);
     }
 
     private static void updateOther(Item item) {
