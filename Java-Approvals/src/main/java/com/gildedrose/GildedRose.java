@@ -19,35 +19,19 @@ class GildedRose {
         }
 
         if (item.name.equals("Aged Brie")) {
-            item.sellIn -= 1;
-            item.quality += 1;
-            if (item.sellIn < 0) {
-                item.quality += 1;
-            }
-            if (item.quality > 50) {
-                item.quality = 50;
-            }
+            updateAgedBrie(item);
             return;
         }
 
         if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            item.sellIn -= 1;
-            item.quality += 1;
-            if (item.sellIn < 10) {
-                item.quality += 1;
-            }
-            if (item.sellIn < 5) {
-                item.quality += 1;
-            }
-            if (item.sellIn < 0) {
-                item.quality = 0;
-            }
-            if (item.quality > 50) {
-                item.quality = 50;
-            }
+            updateBackstagePass(item);
             return;
         }
 
+        updateOther(item);
+    }
+
+    private static void updateOther(Item item) {
         item.sellIn -= 1;
         if (item.quality > 0) {
             item.quality -= 1;
@@ -55,6 +39,34 @@ class GildedRose {
 
         if (item.quality > 0 && item.sellIn < 0) {
             item.quality -= 1;
+        }
+    }
+
+    private static void updateBackstagePass(Item item) {
+        item.sellIn -= 1;
+        item.quality += 1;
+        if (item.sellIn < 10) {
+            item.quality += 1;
+        }
+        if (item.sellIn < 5) {
+            item.quality += 1;
+        }
+        if (item.sellIn < 0) {
+            item.quality = 0;
+        }
+        if (item.quality > 50) {
+            item.quality = 50;
+        }
+    }
+
+    private static void updateAgedBrie(Item item) {
+        item.sellIn -= 1;
+        item.quality += 1;
+        if (item.sellIn < 0) {
+            item.quality += 1;
+        }
+        if (item.quality > 50) {
+            item.quality = 50;
         }
     }
 
