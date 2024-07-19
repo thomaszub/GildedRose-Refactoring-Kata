@@ -9,7 +9,8 @@ public class ItemDegradationFactory {
             case "Sulfuras, Hand of Ragnaros" -> new SulfurasItemDegradation();
             case "Aged Brie" -> new AgedBrieItemDegradation(item);
             case "Backstage passes to a TAFKAL80ETC concert" -> new BackstagePassItemDegradation(item);
-            default -> new GeneralItemDegradation(item);
+            default ->
+                (item.name.startsWith("Conjured")) ? new ConjuredItemDegradation(item) : new GeneralItemDegradation(item);
         };
     }
 
